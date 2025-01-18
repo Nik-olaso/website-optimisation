@@ -6,92 +6,95 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0008_avatar'),
+        ("blog", "0008_avatar"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='comment',
+            name="comment",
             options={
-                'ordering': ['-published_at'],
-                'verbose_name': 'комментарий',
-                'verbose_name_plural': 'комментарии'
+                "ordering": ["-published_at"],
+                "verbose_name": "комментарий",
+                "verbose_name_plural": "комментарии",
             },
         ),
         migrations.AlterModelOptions(
-            name='post',
+            name="post",
             options={
-                'ordering': ['-published_at'],
-                'verbose_name': 'пост',
-                'verbose_name_plural': 'посты'
+                "ordering": ["-published_at"],
+                "verbose_name": "пост",
+                "verbose_name_plural": "посты",
             },
         ),
         migrations.AlterModelOptions(
-            name='tag',
+            name="tag",
             options={
-                'ordering': ['title'],
-                'verbose_name': 'тег',
-                'verbose_name_plural': 'теги'
+                "ordering": ["title"],
+                "verbose_name": "тег",
+                "verbose_name_plural": "теги",
             },
         ),
         migrations.AlterField(
-            model_name='comment',
-            name='published_at',
-            field=models.DateTimeField(verbose_name='Дата и время публикации'),
+            model_name="comment",
+            name="published_at",
+            field=models.DateTimeField(verbose_name="Дата и время публикации"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='author',
+            model_name="post",
+            name="author",
             field=models.ForeignKey(
-                limit_choices_to={'is_staff': True},
+                limit_choices_to={"is_staff": True},
                 on_delete=django.db.models.deletion.CASCADE,
-                to=settings.AUTH_USER_MODEL, verbose_name='Автор'),
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Автор",
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='image',
-            field=models.ImageField(upload_to='', verbose_name='Картинка'),
+            model_name="post",
+            name="image",
+            field=models.ImageField(upload_to="", verbose_name="Картинка"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='likes',
+            model_name="post",
+            name="likes",
             field=models.ManyToManyField(
-                blank=True, related_name='liked_posts',
-                to=settings.AUTH_USER_MODEL, verbose_name='Кто лайкнул'),
+                blank=True,
+                related_name="liked_posts",
+                to=settings.AUTH_USER_MODEL,
+                verbose_name="Кто лайкнул",
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='published_at',
-            field=models.DateTimeField(verbose_name='Дата и время публикации'),
+            model_name="post",
+            name="published_at",
+            field=models.DateTimeField(verbose_name="Дата и время публикации"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='slug',
-            field=models.SlugField(
-                max_length=200, verbose_name='Название в виде url'),
+            model_name="post",
+            name="slug",
+            field=models.SlugField(max_length=200, verbose_name="Название в виде url"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='tags',
+            model_name="post",
+            name="tags",
             field=models.ManyToManyField(
-                related_name='posts', to='blog.Tag', verbose_name='Теги'),
+                related_name="posts", to="blog.Tag", verbose_name="Теги"
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='text',
-            field=models.TextField(verbose_name='Текст'),
+            model_name="post",
+            name="text",
+            field=models.TextField(verbose_name="Текст"),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='title',
-            field=models.CharField(max_length=200, verbose_name='Заголовок'),
+            model_name="post",
+            name="title",
+            field=models.CharField(max_length=200, verbose_name="Заголовок"),
         ),
         migrations.AlterField(
-            model_name='tag',
-            name='title',
-            field=models.CharField(
-                max_length=20, unique=True, verbose_name='Тег'),
+            model_name="tag",
+            name="title",
+            field=models.CharField(max_length=20, unique=True, verbose_name="Тег"),
         ),
     ]

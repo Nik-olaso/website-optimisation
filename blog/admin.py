@@ -8,28 +8,26 @@ admin.site.register(Comment)
 
 
 class PostAdmin(admin.ModelAdmin):
-
     list_display = [
-        'title',
-        'text',
-        'slug',
-        'image',
-        'published_at',
-        'author',
-        'likes',
-        'tags',
+        "title",
+        "text",
+        "slug",
+        "image",
+        "published_at",
+        "author",
+        "likes",
+        "tags",
     ]
 
-    raw_id_fields = ['author', 'likes', 'tags']
+    raw_id_fields = ["author", "likes", "tags"]
 
 
 class CommentAdmin(admin.ModelAdmin):
-
     list_display = [
-        'post',
-        'author',
-        'text',
-        'published_at',
+        "post",
+        "author",
+        "text",
+        "published_at",
     ]
 
-    raw_id_fields = ['post', 'author']
+    raw_id_fields = ["post", "author"]
