@@ -85,7 +85,7 @@ def post_detail(request, slug):
         .prefetch_related("author")[:5]
         .prefetch_tag()
         .fetch_with_comments_count()
-    )  # TODO. Как это посчитать?
+    )
 
     context = {
         "post": serialized_post,
@@ -105,7 +105,7 @@ def tag_filter(request, tag_title):
         .prefetch_related("author")[:5]
         .prefetch_tag()
         .fetch_with_comments_count()
-    )  # TODO. Как это посчитать?
+    )
 
     related_posts = (
         tag.posts.all()
@@ -124,6 +124,4 @@ def tag_filter(request, tag_title):
 
 
 def contacts(request):
-    # позже здесь будет код для статистики заходов на эту страницу
-    # и для записи фидбека
     return render(request, "contacts.html", {})
